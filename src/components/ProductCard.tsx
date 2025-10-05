@@ -12,7 +12,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
   );
 
   return (
-    <Link to={`/product/${product.id}`} className="group">
+    <Link to={`/product/${product.id}`} className="group" aria-label={`View details for ${product.name}`}>
       <div className="relative overflow-hidden bg-secondary rounded-sm mb-4 aspect-square">
         <img
           src={product.image}
@@ -23,7 +23,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
           height="308"
         />
         {discountPercentage > 0 && (
-          <Badge className="absolute top-3 left-3 bg-sale text-white font-semibold">
+          <Badge className="absolute top-3 left-3 bg-sale text-white font-semibold" aria-label={`${discountPercentage}% off`}>
             SALE -{discountPercentage}%
           </Badge>
         )}
@@ -36,10 +36,10 @@ const ProductCard = ({ product }: ProductCardProps) => {
           {product.name}
         </h3>
         <div className="flex items-center space-x-2">
-          <span className="text-sm line-through text-price-old">
+          <span className="text-sm line-through text-price-old" aria-label={`Original price $${product.oldPrice.toFixed(2)}`}>
             ${product.oldPrice.toFixed(2)}
           </span>
-          <span className="text-lg font-bold">
+          <span className="text-lg font-bold" aria-label={`Sale price $${product.newPrice.toFixed(2)}`}>
             ${product.newPrice.toFixed(2)}
           </span>
         </div>

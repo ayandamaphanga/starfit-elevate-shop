@@ -11,7 +11,7 @@ const Index = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative h-[600px] overflow-hidden">
+      <section className="relative h-[600px] overflow-hidden" aria-label="Hero banner">
         <img
           src={heroBanner}
           alt="Fall Collection"
@@ -33,6 +33,7 @@ const Index = () => {
               <Button
                 size="lg"
                 className="bg-accent hover:bg-accent/90 text-white font-bold px-8 text-lg"
+                aria-label="Shop fall collection"
               >
                 SHOP NOW
               </Button>
@@ -42,16 +43,18 @@ const Index = () => {
       </section>
 
       {/* Featured Products */}
-      <section className="container mx-auto px-4 py-16">
+      <section className="container mx-auto px-4 py-16" aria-labelledby="bestsellers-heading">
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold mb-4">Bestsellers</h2>
+          <h2 id="bestsellers-heading" className="text-4xl font-bold mb-4">Bestsellers</h2>
           <p className="text-muted-foreground">
             Our most popular gear for peak performance
           </p>
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6" role="list">
           {featuredProducts.map((product) => (
-            <ProductCard key={product.id} product={product} />
+            <div key={product.id} role="listitem">
+              <ProductCard product={product} />
+            </div>
           ))}
         </div>
         <div className="text-center mt-12">
@@ -60,6 +63,7 @@ const Index = () => {
               size="lg"
               variant="outline"
               className="border-2 border-primary hover:bg-primary hover:text-primary-foreground font-semibold"
+              aria-label="Explore full collection"
             >
               EXPLORE COLLECTION
             </Button>

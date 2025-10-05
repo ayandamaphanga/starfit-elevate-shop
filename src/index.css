@@ -51,6 +51,17 @@ All colors MUST be HSL.
   body {
     @apply bg-background text-foreground;
   }
+
+  /* Enhanced focus styles for accessibility */
+  *:focus-visible {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 2px;
+  }
+
+  /* Remove default focus outline when using focus-visible */
+  *:focus:not(:focus-visible) {
+    outline: none;
+  }
 }
 
 /* Fix touch target size for Lovable badge close button */

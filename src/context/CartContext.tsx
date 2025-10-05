@@ -9,12 +9,19 @@ interface CartContextType {
   clearCart: () => void;
   getCartTotal: () => number;
   getCartCount: () => number;
+  announcement: string;
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
 export const CartProvider = ({ children }: { children: ReactNode }) => {
   const [cart, setCart] = useState<CartItem[]>([]);
+  const [announcement, setAnnouncement] = useState("");
+
+  const announce = (message: string) => {
+    setAnnouncement(message);
+    setTimeout(() => setAnnouncement(""), 1000);
+  };
 
   const addToCart = (item: CartItem) => {
     setCart((prevCart) => {
@@ -25,6 +32,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
       );
 
       if (existingItem) {
+        announce(`Updated ${item.name} quantity to ${existingItem.quantity + item.quantity} in cart`);
         return prevCart.map((cartItem) =>
           cartItem.id === item.id &&
           cartItem.selectedSize === item.selectedSize
@@ -33,16 +41,21 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
         );
       }
 
+      announce(`Added ${item.name} to cart`);
       return [...prevCart, item];
     });
   };
 
   const removeFromCart = (id: string, size?: string) => {
-    setCart((prevCart) =>
-      prevCart.filter(
+    setCart((prevCart) => {
+      const item = prevCart.find((i) => i.id === id && i.selectedSize === size);
+      if (item) {
+        announce(`Removed ${item.name} from cart`);
+      }
+      return prevCart.filter(
         (item) => !(item.id === id && item.selectedSize === size)
-      )
-    );
+      );
+    });
   };
 
   const updateQuantity = (id: string, quantity: number, size?: string) => {
@@ -61,6 +74,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const clearCart = () => {
+    announce("Cart cleared");
     setCart([]);
   };
 
@@ -85,9 +99,13 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
         clearCart,
         getCartTotal,
         getCartCount,
+        announcement,
       }}
     >
       {children}
+      <div role="status" aria-live="polite" aria-atomic="true" className="sr-only">
+        {announcement}
+      </div>
     </CartContext.Provider>
   );
 };
