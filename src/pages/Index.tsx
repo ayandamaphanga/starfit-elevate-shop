@@ -17,6 +17,7 @@ const Index = () => {
           alt="Fall Collection"
           className="w-full h-full object-cover"
           fetchPriority="high"
+          loading="eager"
           width="1440"
           height="600"
         />
