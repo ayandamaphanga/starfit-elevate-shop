@@ -24,9 +24,9 @@ All colors MUST be HSL.
     --secondary-foreground: 0 0% 10%;
 
     --muted: 0 0% 96%;
-    --muted-foreground: 0 0% 45%;
+    --muted-foreground: 0 0% 40%;
 
-    --accent: 16 100% 60%;
+    --accent: 16 100% 42%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
@@ -34,12 +34,12 @@ All colors MUST be HSL.
 
     --border: 0 0% 90%;
     --input: 0 0% 90%;
-    --ring: 16 100% 60%;
+    --ring: 16 100% 42%;
 
     --radius: 0.25rem;
 
-    --sale-badge: 16 100% 60%;
-    --price-old: 0 0% 60%;
+    --sale-badge: 16 100% 42%;
+    --price-old: 0 0% 40%;
   }
 }
 
