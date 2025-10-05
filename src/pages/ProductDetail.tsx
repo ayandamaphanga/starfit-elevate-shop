@@ -6,6 +6,7 @@ import { useCart } from "@/context/CartContext";
 import { products } from "@/data/products";
 import { toast } from "@/hooks/use-toast";
 import { ChevronLeft } from "lucide-react";
+import ProductReviews from "@/components/ProductReviews";
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -138,6 +139,8 @@ const ProductDetail = () => {
           </div>
         </div>
       </div>
+
+      <ProductReviews reviews={product.reviews} />
     </div>
   );
 };
