@@ -71,7 +71,7 @@ const Header = () => {
             <Button variant="ghost" size="icon" aria-label="Account">
               <User className="h-5 w-5" />
             </Button>
-            <Link to="/cart">
+            <Link to="/cart" aria-label="Shopping cart">
               <Button variant="ghost" size="icon" className="relative" aria-label="Shopping cart">
                 <ShoppingCart className="h-5 w-5" />
                 {getCartCount() > 0 && (
