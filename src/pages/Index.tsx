@@ -16,6 +16,9 @@ const Index = () => {
           src={heroBanner}
           alt="Fall Collection"
           className="w-full h-full object-cover"
+          fetchPriority="high"
+          width="1440"
+          height="600"
         />
         <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
           <div className="text-center text-white px-4">
