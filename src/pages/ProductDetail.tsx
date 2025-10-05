@@ -67,6 +67,9 @@ const ProductDetail = () => {
             alt={product.name}
             className="w-full h-full object-cover"
           />
+          <div className="absolute top-4 right-4 bg-background/90 backdrop-blur-sm px-3 py-2 rounded-sm">
+            <span className="text-sm font-black tracking-tight">STAR-FIT</span>
+          </div>
           {discountPercentage > 0 && (
             <Badge className="absolute top-4 left-4 bg-sale text-white font-semibold text-base px-3 py-1">
               SALE -{discountPercentage}%
